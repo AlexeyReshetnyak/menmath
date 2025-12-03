@@ -14,10 +14,63 @@ struct trainer {
 
   trainer(uint32_t num_examples=10);
   void Sum();
+  void Mul();
+  void Diff();
 };
 
 trainer::trainer(uint32_t num_examples_) {
   num_examples = num_examples_;
+}
+
+void trainer::Mul()
+{
+  std::random_device rd;  // a seed source for the random number engine
+  std::mt19937 gen(rd()); // mersenne_twister_engine seeded with rd()
+  std::uniform_int_distribution<int> distrib1(0, 101);
+  std::uniform_int_distribution<int> distrib2(0, 11);
+
+  for (uint32_t i = 0; i < num_examples; i++) {
+    uint32_t num_1 = distrib1(gen);
+    uint32_t num_2 = distrib2(gen);
+
+    while (1) {
+      cout << num_1 << " * " << num_2 << " = ";
+      uint32_t answer = get_answer();
+      if( num_1 * num_2 == answer) {
+        cout << "ok" << endl;
+        break;
+      }
+      else
+        cout << "Wrong." << endl;
+    }
+  }
+}
+
+void trainer::Diff()
+{
+  std::random_device rd;  // a seed source for the random number engine
+  std::mt19937 gen(rd()); // mersenne_twister_engine seeded with rd()
+  std::uniform_int_distribution<int> distrib(0, 101);
+
+  uint32_t i = num_examples;
+  while (i != 0) {
+    uint32_t num_1 = distrib(gen);
+    uint32_t num_2 = distrib(gen);
+    if (num_2 > num_1)
+      continue;
+
+    while (1) {
+      cout << num_1 << " - " << num_2 << " = ";
+      uint32_t answer = get_answer();
+      if( num_1 - num_2 == answer) {
+        cout << "ok" << endl;
+        break;
+      }
+      else
+        cout << "Wrong." << endl;
+    }
+  i--;
+  }
 }
 
 void trainer::Sum()
@@ -31,7 +84,7 @@ void trainer::Sum()
     uint32_t num_2 = distrib(gen);
 
     while (1) {
-      cout << num_1 << " + " << num_2 << endl;
+      cout << num_1 << " + " << num_2 << " = ";
       uint32_t answer = get_answer();
       if( num_1 + num_2 == answer) {
         cout << "ok" << endl;
@@ -40,7 +93,6 @@ void trainer::Sum()
       else
         cout << "Wrong." << endl;
     }
-    
   }
 }
 
@@ -65,8 +117,10 @@ uint32_t get_answer()
 
 int main()
 {
-  trainer training;
+  trainer training(5);
   training.Sum();
+  training.Mul();
+  training.Diff();
 
   return 0;
 }
