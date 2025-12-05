@@ -45,6 +45,21 @@ class diff {
   void execise();
 };
 
+class change {
+  uint32_t num_examples;
+  uint32_t bancnote;
+
+  public:
+  change(uint32_t num_examples_, uint32_t bancnote_);
+  void execise();
+};
+
+change::change(uint32_t num_examples_=10, uint32_t bancnote_=100)
+{
+  num_examples = num_examples_;
+  bancnote = bancnote_;
+}
+
 summ::summ(uint32_t num_examples_, uint32_t l1_, uint32_t h1_,
            uint32_t l2_, uint32_t h2_)
 {
@@ -120,6 +135,32 @@ diff::diff(uint32_t num_examples_, uint32_t l_, uint32_t h_)
   h = h_;
 }
 
+void change::execise()
+{
+  random_device rd;  // a seed source for the random number engine
+  mt19937 gen(rd()); // mersenne_twister_engine seeded with rd()
+  uniform_int_distribution<int> distrib(1, bancnote);
+
+  uint32_t i = num_examples;
+  while (i != 0) {
+    uint32_t num = distrib(gen);
+    if (num > bancnote)
+      continue;
+
+    while (1) {
+      cout << bancnote << " - " << num << " = ";
+      uint32_t answer = get_answer();
+      if(bancnote - num == answer) {
+        cout << "ok" << endl;
+        break;
+      }
+      else
+        cout << "Wrong." << endl;
+    }
+  i--;
+  }
+}
+
 void diff::execise()
 {
   std::random_device rd;  // a seed source for the random number engine
@@ -179,6 +220,7 @@ int main()
 
   diff dif;
   dif.execise();
+  change(10, 2000).execise();
 
   return 0;
 }
