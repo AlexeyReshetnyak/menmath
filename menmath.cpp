@@ -5,6 +5,8 @@
 #include <ctime>
 #include <random>
 
+#include "include/clipp.h"
+
 using namespace std;
 
 uint32_t get_answer();
@@ -207,8 +209,38 @@ uint32_t get_answer()
   return answer;
 }
 
-int main()
+int main(int argc, char* argv[])
 {
+    using namespace clipp;
+string infile;
+bool tr = false, rot = false;
+double x = 0, y = 0, z = 0;
+double phi = 0, theta = 0;
+
+auto cli = (
+    option("-translate").set(tr) & value("x", x) & value("y", y) & value("z", z)
+);
+    if(parse(argc, argv, cli)) {
+        if(!tr && !rot) {
+            cout << "nothing will be done with file '" << infile << "'\n";
+        }
+        else {
+            cout << "transforming content of file '" << infile << "'\n";
+            if(tr) {
+                cout << "translating objects by vector ("
+                     << x << ", " << y << ", " << z << ")\n";
+            }
+            if(rot) {
+                cout << "rotating objects about azimuth = " << phi
+                     << " and polar angle = " << theta << '\n';
+            }
+        }
+    }
+    else {
+        cout << "Usage:\n" << usage_lines(cli, argv[0]) << '\n';
+    }
+exit(0);
+
   summ sum0(10, 5, 8, 5, 8);
   sum0.execise();
 
