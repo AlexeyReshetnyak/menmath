@@ -208,52 +208,45 @@ uint32_t get_answer()
   }
   return answer;
 }
-
+// ./menmath --warm 5 5 8 5 8 --sum 10 11 101 11 101 --mult 10 11 101 0 11 --diff 10 0 101 --change 10 2000
 int main(int argc, char* argv[])
 {
-    using namespace clipp;
-string infile;
-bool tr = false, rot = false;
-double x = 0, y = 0, z = 0;
-double phi = 0, theta = 0;
+  using namespace clipp;
 
-auto cli = (
-    option("-translate").set(tr) & value("x", x) & value("y", y) & value("z", z)
-);
+  bool fwarm = false;
+  bool fsum = false;
+  bool fmult = false;
+  bool fdiff = false;
+  bool fchange = false;
+  uint32_t n[5] = {0}; //TODO: FIXME: define macro or const
+  uint32_t l1[5] = {0}; //TODO: FIXME: define macro or const
+  uint32_t h1[5] = {0}; //TODO: FIXME: define macro or const
+  uint32_t l2[5] = {0}; //TODO: FIXME: define macro or const
+  uint32_t h2[5] = {0}; //TODO: FIXME: define macro or const
+  uint32_t note = 0;
+
+  auto cli = (
+      option("--warm").set(fwarm) & value("n", n[0]) & value("l1", l1[0]) & value("h1", h1[0]) & value("l2", l2[0]) & value("h2", h2[0]),
+      option("--sum").set(fsum) & value("n", n[1]) & value("l1", l1[1]) & value("h1", h1[1]) & value("l2", l2[1]) & value("h2", h2[1]),
+      option("--mult").set(fmult) & value("n", n[2]) & value("l1", l1[2]) & value("h1", h1[2]) & value("l2", l2[2]) & value("h2", h2[2]),
+      option("--diff").set(fdiff) & value("n", n[3]) & value("l1", l1[3]) & value("h1", h1[3]),
+      option("--change").set(fchange) & value("n", n[4]) & value("note", note)
+    );
+
     if(parse(argc, argv, cli)) {
-        if(!tr && !rot) {
-            cout << "nothing will be done with file '" << infile << "'\n";
-        }
-        else {
-            cout << "transforming content of file '" << infile << "'\n";
-            if(tr) {
-                cout << "translating objects by vector ("
-                     << x << ", " << y << ", " << z << ")\n";
-            }
-            if(rot) {
-                cout << "rotating objects about azimuth = " << phi
-                     << " and polar angle = " << theta << '\n';
-            }
-        }
+      if(fwarm)
+        summ(n[0], l1[0], h1[0], l2[0], h2[0]).execise();
+      if(fsum)
+        summ(n[1], l1[1], h1[1], l2[1], h2[1]).execise();
+      if(fmult)
+        mult(n[2], l1[2], h1[2], l2[2], h2[2]).execise();
+      if(fdiff)
+        diff(n[3], l1[3], h1[3]).execise();
+      if(fchange)
+        change(n[4], note).execise();
     }
-    else {
-        cout << "Usage:\n" << usage_lines(cli, argv[0]) << '\n';
-    }
-exit(0);
-
-  summ sum0(10, 5, 8, 5, 8);
-  sum0.execise();
-
-  summ sum1;
-  sum1.execise();
-
-  mult mul0;
-  mul0.execise();
-
-  diff dif;
-  dif.execise();
-  change(10, 2000).execise();
+    else
+      cout << "Usage:\n" << usage_lines(cli, argv[0]) << '\n';
 
   return 0;
 }
-
