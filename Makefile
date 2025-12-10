@@ -8,3 +8,5 @@ deb: menmath
 	mkdir -vp pkg/menmath_1-1_all/usr/local/bin
 	cp -v menmath pkg/menmath_1-1_all/usr/local/bin
 	dpkg --build pkg/menmath_1-1_all
+doc: doc/menmath
+	man doc/menmath > README
