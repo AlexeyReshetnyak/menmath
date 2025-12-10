@@ -1,0 +1,8 @@
+Package: menmath
+Version: 1
+Maintainer: Alexey Reshetnyak <https://github.com/AlexeyReshetnyak/menmath>
+Depends:
+Architecture: all
+Homepage: https://github.com/AlexeyReshetnyak/menmath
+Description: utility to train mental math
+
