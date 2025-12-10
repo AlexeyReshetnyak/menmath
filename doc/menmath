@@ -1,5 +1,4 @@
 .\" Manpage for menmath.
-.\" Contact alexey.reshetnyak@ro.ru to correct errors or typos.
 .TH man 1 "10 December 2025" "1" "menmath man page"
 .SH NAME
 menmath \- utility to train mental math
@@ -21,16 +20,18 @@ Run menmath, and it offer simple random arithmetic exercise. Solve it (in mind),
 --change - change counter trainer.
 
 .SH EXAMPLES 
-menmath --warm 5 5 8 5 8 --sum 10 11 101 11 101 --mult 10 11 101 0 11 --diff 10 0 101 --change 10 2000
-
-Warm up in 5 exercises first digit in range from 5 to 8, and second digit from 5 to 8. Train summation in 10 exercises the first number in range from 11 to 101, and the second number in range from 11 to 101. Multiplication in 10 exersises the first number from 11 to 101, the second number is from 0 to 1. Subtraction in 10 exersises where numbers from 0 to 101, but the second number always lower than first. Finally train change counting in 10 exersises for the banknote in 2000 (dollars, pounds watewer).
 
 menmath --sum 10 11 101 11 101
 
 Train summation in 10 exercises the first number in range from 11 to 101, and the second number in range from 11 to 101. 
 
+menmath --warm 5 5 8 5 8 --sum 10 11 101 11 101 --mult 10 11 101 0 11 --diff 10 0 101 --change 10 2000
+
+Warm up in 5 exercises first digit in range from 5 to 8, and second digit from 5 to 8. Train summation in 10 exercises the first number in range from 11 to 101, and the second number in range from 11 to 101. Multiplication in 10 exersises the first number from 11 to 101, the second number is from 0 to 1. Subtraction in 10 exersises where numbers from 0 to 101, but the second number always lower than first. Finally train change counting in 10 exersises for the banknote in 2000 (dollars, pounds watewer).
+
+
 .SH BUGS
 No known bugs.
 
 .SH AUTHOR
-Alexey Reshetnyak (alexey.reshetnyak@ro.ru)
+Alexey Reshetnyak (https://github.com/AlexeyReshetnyak/menmath)
