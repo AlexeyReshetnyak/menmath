@@ -1,27 +1,34 @@
-man(1)                                                     menmath man page                                                    man(1)
+man(1)                         menmath man page                         man(1)
 
 NAME
        menmath - utility to train mental math
 
 SYNOPSIS
-       menmath  [--warm  <n>  <l1>  <h1> <l2> <h2>] [--sum <n> <l1> <h1> <l2> <h2>] [--mult <n> <l1> <h1> <l2> <h2>] [--diff <n> <l1>
-       <h1>] [--change <n> <note>]
+       menmath  [--warm  <n>  <l1>  <h1>  <l2> <h2>] [--sum <n> <l1> <h1> <l2>
+       <h2>] [--mult <n> <l1> <h1> <l2> <h2>] [--diff <n> <l1> <h1>] [--change
+       <n> <note>]
 
 DESCRIPTION
-       Run menmath, and it offer simple random arithmetic exercise. Solve it (in mind), type answer in terminal, and press enter.
+       Run  menmath,  and it offer simple random arithmetic exercise. Solve it
+       (in mind), type answer in terminal, and press enter.
 
 EXAMPLES
        menmath --sum 10 11 101 11 101
 
-       Train summation in 10 exercises the first number in range from 11 to 101, and the second number in range from 11 to 101.
+       Train summation in 10 exercises the first number in range  from  11  to
+       101, and the second number in range from 11 to 101.
 
-       menmath --warm 5 5 8 5 8 --sum 10 11 101 11 101 --mult 10 11 101 0 11 --diff 10 0 101 --change 10 2000
+       menmath  --warm  5 5 8 5 8 --sum 10 11 101 11 101 --mult 10 11 101 0 11
+       --diff 10 0 101 --change 10 2000
 
-       Warm up in 5 exercises first digit in range from 5 to 8, and second digit from 5 to 8. Train summation  in  10  exercises  the
-       first  number in range from 11 to 101, and the second number in range from 11 to 101. Multiplication in 10 exersises the first
-       number from 11 to 101, the second number is from 0 to 1. Subtraction in 10 exersises where numbers from 0 to 101, but the sec‐
-       ond  number  always  lower than first. Finally train change counting in 10 exersises for the banknote in 2000 (dollars, pounds
-       watewer).
+       Warm up in 5 exercises first digit in range from 5  to  8,  and  second
+       digit  from 5 to 8. Train summation in 10 exercises the first number in
+       range from 11 to 101, and the second number in range from  11  to  101.
+       Multiplication  in  10  exersises  the first number from 11 to 101, the
+       second number is from 0 to 1. Subtraction in 10 exersises where numbers
+       from  0  to 101, but the second number always lower than first. Finally
+       train change counting in 10 exersises for the banknote  in  2000  (dol‐
+       lars, pounds watewer).
 
        menmath
 
@@ -39,9 +46,15 @@ OPTIONS
        --change - change counter trainer.
 
 INSTALLATION
-       git clone https://github.com/AlexeyReshetnyak/menmath cd menmath make all make install
+       git clone https://github.com/AlexeyReshetnyak/menmath
+
+       cd menmath
+
+       make all
+
+       make install
 
 AUTHOR
        Alexey Reshetnyak (https://github.com/AlexeyReshetnyak/menmath)
 
-1                                                          10 December 2025                                                    man(1)
+1                              10 December 2025                         man(1)
