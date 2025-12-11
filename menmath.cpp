@@ -244,9 +244,16 @@ int main(int argc, char* argv[])
         diff(n[3], l1[3], h1[3]).execise();
       if(fchange)
         change(n[4], note).execise();
+
+      summ(5, 5, 8, 5, 8).execise();
+      summ().execise();
+      mult().execise();
+      diff().execise();
+      change(10, 2000).execise();
     }
     else
       cout << "Usage:\n" << usage_lines(cli, argv[0]) << '\n';
 
   return 0;
 }
+
